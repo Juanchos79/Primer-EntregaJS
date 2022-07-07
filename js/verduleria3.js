@@ -77,4 +77,54 @@ function muestroCarrito(){
    }	
 }
 
-validarMenu();
+
+
+// Declaro un array
+
+let productos = [
+	{
+	  id: 1,
+	  nombre: "Manzanas",
+	  precio: 60,
+	  imagen: "./img/manzana.jpg",
+	},
+	{
+    	id: 2,
+	    nombre: "Bananas",
+		precio: 55,
+		imagen: "./img/Bananas.jpg",
+	},
+	{
+		id: 3,
+		nombre: "Tomates",
+		precio: 70,
+		imagen: "./img/tomates.webp",
+	  },
+]
+//let Producto = document.getElementbyId("ProductoFruta");
+//console.log(ProductoFruta.innerHTML);
+
+const contenedor = document.getElementById("container");
+
+productos.forEach((producto, indice) => {
+  
+  let card = document.createElement("div");
+  
+  card.classList.add("card", "col-sm-12", "col-md-3");
+  
+  card.innerHTML = `<img src="${producto.imagen}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${producto.nombre}</h5>
+      <p class="card-text">${producto.precio}</p>
+      <a href="#cart" class="btn btn-primary" onClick="comprar(${indice})" >Comprar</a>
+    </div>
+      `;
+  
+  contenedor.appendChild(card);
+});
+
+const comprar = (indice) => {
+	alert(`elegiste el ${productos[indice].nombre}`);
+  };
+
+  validarMenu();
